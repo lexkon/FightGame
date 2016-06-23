@@ -18,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA06A2481D146CAC00C76EEE /* Scratchpad.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Scratchpad.playground; sourceTree = "<group>"; };
 		FA75EBD51D096BBC00EA9BF8 /* FightGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FightGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA75EBD81D096BBC00EA9BF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA75EBDA1D096BBC00EA9BF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +25,7 @@
 		FA75EBDF1D096BBC00EA9BF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA75EBE21D096BBC00EA9BF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA75EBE41D096BBC00EA9BF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAE7F86C1D0DCA44008F7756 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FAE7F86C1D0DCA44008F7756 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = "../Class Files/Character.swift"; sourceTree = "<group>"; };
 		FAF924D01D0DCFE100B192A7 /* Soldier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Soldier.swift; path = "Class Files/Soldier.swift"; sourceTree = SOURCE_ROOT; };
 		FAF924D21D0DD65600B192A7 /* Creature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Creature.swift; path = "Class Files/Creature.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -48,7 +47,6 @@
 				FA75EBD71D096BBC00EA9BF8 /* FightGame */,
 				FAF924CF1D0DCFCE00B192A7 /* Class Files */,
 				FA75EBD61D096BBC00EA9BF8 /* Products */,
-				FA06A2481D146CAC00C76EEE /* Scratchpad.playground */,
 			);
 			sourceTree = "<group>";
 		};
