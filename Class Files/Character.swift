@@ -9,9 +9,9 @@
 import Foundation
 
 class Character {
-    var _hp: Int!
-    var _attackPwr: Int!
-    var _name: String!
+    private var _hp: Int!
+    private var _attackPwr: Int!
+    private var _name: String!
 
     // Computed properties
     var hp: Int {
@@ -39,7 +39,7 @@ class Character {
     }
     
     var isAlive: Bool {
-        if _hp <= 0 {
+        if hp <= 0 {
             return false
         } else {
             return true
@@ -53,7 +53,7 @@ class Character {
     }
     
     func attemptAttack(attackPwr: Int) -> Bool {
-        self._hp! -= attackPwr
+        self.hp -= attackPwr
         
         return true
     }
