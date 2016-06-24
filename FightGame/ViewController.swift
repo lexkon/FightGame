@@ -39,36 +39,31 @@ class ViewController: UIViewController {
     //MARK: Actions
     @IBAction func orcAttackBtnPress(sender: AnyObject) {
         let randAttack = orcRandomAP()
-        
         if soldier.isAlive {
-            orc.attemptAttack(randAttack)
+            soldier.attacked(randAttack)
             textLabel.text = "Orc hit Soldier for \(randAttack)"
             soldierHPLabel.text = "\(soldier.hp) HP"
             orcAttackBtn.enabled = false
             soldierAttackBtn.enabled = true
+            checkHP()
         }
         else {
-            textLabel.text = "Orc killed Soldier💀"
-            soldierHPLabel.text = "💀"
-            orcScore += 1
-            endGame()
+            checkHP()
         }
     }
     
     @IBAction func soldierAttackBtnPress(sender: AnyObject) {
         let randAttack = soldierRandomAP()
         if orc.isAlive {
-            soldier.attemptAttack(randAttack)
+            orc.attacked(randAttack)
             textLabel.text = "Soldier hit Orc for \(randAttack)"
             orcHPLabel.text = "\(orc.hp) HP"
             soldierAttackBtn.enabled = false
             orcAttackBtn.enabled = true
+            checkHP()
         }
         else {
-            textLabel.text = "Soldier killed Orc 💀"
-            orcHPLabel.text = "💀"
-            soldierScore += 1
-            endGame()
+            checkHP()
         }
     }
     
@@ -82,12 +77,13 @@ class ViewController: UIViewController {
     
     
     //MARK: Functions
-    func endGame() {
+    func endGame(attacker: String, victim: String) {
         orcAttackBtn.enabled = false
         soldierAttackBtn.enabled = false
         restartLabel.hidden = false
         restartButton.hidden = false
         scoreLabel.text = "\(orcScore) - \(soldierScore)"
+        textLabel.text = "\(attacker) killed \(victim) 💀"
     }
     
     func newGame() {
@@ -132,6 +128,20 @@ class ViewController: UIViewController {
     func disableSoldierAttack() {
         soldierAttackBtn.enabled = false
         orcAttackBtn.enabled = true
+    }
+    
+    func checkHP() {
+        if soldier.isAlive == false {
+            soldierHPLabel.text = "💀"
+            orcScore += 1
+            endGame("Orc", victim: "Soldier")
+        } else if orc.isAlive == false {
+            orcHPLabel.text = "💀"
+            soldierScore += 1
+            endGame("Soldier", victim: "Orc")
+        } else {
+            print("No winner yet!")
+        }
     }
     
 }
