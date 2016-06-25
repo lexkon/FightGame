@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -26,14 +27,15 @@ class ViewController: UIViewController {
     var orcScore = 0
     var soldierScore = 0
     
+    var player: AVAudioPlayer = AVAudioPlayer()
+    
     
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         soldier = Soldier(hp: soldierRandomHP(), attackPwr: soldierRandomAP(), name: "Soldier")
         orc = Creature(hp: orcRandomHP(), attackPwr: orcRandomAP(), name: "Orc")
-        orcHPLabel.text = "\(orc.hp) HP"
-        soldierHPLabel.text = "\(soldier.hp) HP"
+        newGame()
     }
     
     //MARK: Actions
@@ -45,6 +47,7 @@ class ViewController: UIViewController {
             soldierHPLabel.text = "\(soldier.hp) HP"
             orcAttackBtn.enabled = false
             soldierAttackBtn.enabled = true
+            playAudio("orc_attack")
             checkHP()
         }
         else {
@@ -60,6 +63,7 @@ class ViewController: UIViewController {
             orcHPLabel.text = "\(orc.hp) HP"
             soldierAttackBtn.enabled = false
             orcAttackBtn.enabled = true
+            playAudio("soldier_attack")
             checkHP()
         }
         else {
@@ -92,6 +96,7 @@ class ViewController: UIViewController {
         orc.hp = orcRandomHP()
         orc.attackPwr = orcRandomAP()
         setLabels()
+        playAudio("horn")
     }
     
     func setLabels() {
@@ -135,12 +140,26 @@ class ViewController: UIViewController {
             soldierHPLabel.text = "💀"
             orcScore += 1
             endGame("Orc", victim: "Soldier")
+            playAudio("soldier_die")
         } else if orc.isAlive == false {
             orcHPLabel.text = "💀"
             soldierScore += 1
             endGame("Soldier", victim: "Orc")
+            playAudio("orc_die")
         } else {
             print("No winner yet!")
+        }
+    }
+    
+    func playAudio(fileName: String) {
+        let fileLocation = NSBundle.mainBundle().pathForResource("\(fileName)", ofType: "wav")
+        
+        do {
+            try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: fileLocation!))
+            player.play()
+        }
+        catch {
+            // Something something
         }
     }
     
